@@ -11,11 +11,9 @@ class BooksController extends Controller
     {
     }
 
-
-    public function index()
+    public function index(Request $req)
     {
-        return response()->json([
-            ['id' => '1'], ['id' => '2'], ['id' => '3']
-        ]);
+        $serviceResponse = $this->service->index();
+        return $serviceResponse;
     }
 }
