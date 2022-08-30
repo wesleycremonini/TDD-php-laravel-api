@@ -20,7 +20,7 @@ class BooksControllerTest extends TestCase
         $books = Book::factory(3)->create();
 
         $response = $this->getJson('/api/books');
-        dd($response->baseResponse);
+        
         $response->assertStatus(200);
         $response->assertJsonCount(3);
     }
