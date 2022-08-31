@@ -26,6 +26,7 @@ Como rodar:
 ```bash
 git clone https://github.com/wesleycremonini/TDD-php-laravel-api
 cd /your/app/folder             (vá para a pasta onde o projeto foi clonado)
+cp .env.example .env            (para criar .env pronto)
 composer install                (para instalar dependências, incluindo o sail)
 ./vendor/bin/sail up -d         (para subir os containers)
 ./vendor/bin/sail artisan test  (para rodar os testes)
