@@ -43,4 +43,10 @@ class BooksService
     $repositoryResponse = $this->repository->update($id, $updatedBook);
     return $repositoryResponse;
   }
+
+  public function destroy(int $id)
+  {
+    $repositoryResponse = $this->repository->destroy($id);
+    return $repositoryResponse;
+  }
 }

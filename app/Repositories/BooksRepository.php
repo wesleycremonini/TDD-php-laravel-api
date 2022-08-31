@@ -34,4 +34,10 @@ class BooksRepository
     $modelResponse->update($updatedBook);
     return $modelResponse;
   }
+
+  public function destroy(int $id)
+  {
+    $this->model->destroy($id);
+    return [];
+  }
 }

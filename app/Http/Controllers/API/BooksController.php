@@ -37,4 +37,10 @@ class BooksController extends Controller
         $serviceResponse = $this->service->update($id, $req->all());
         return response()->json($serviceResponse);
     }
+
+    public function destroy(int $id): JsonResponse
+    {
+        $serviceResponse = $this->service->destroy($id);
+        return response()->json($serviceResponse, 204);
+    }
 }

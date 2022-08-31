@@ -21,5 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('books', [BooksController::class, 'index']);
 Route::get('books/{id}', [BooksController::class, 'show']);
+
 Route::post('books', [BooksController::class, 'store']);
+
 Route::match(['put', 'patch'], 'books/{id}', [BooksController::class, 'update']);
+
+Route::delete('books/{id}', [BooksController::class, 'destroy']);
