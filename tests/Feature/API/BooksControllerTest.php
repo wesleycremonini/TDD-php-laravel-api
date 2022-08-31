@@ -83,7 +83,7 @@ class BooksControllerTest extends TestCase
     public function test_post_books_endpoint()
     {
         $book = Book::factory(1)->makeOne(); // cria o model mas nao joga pra db
-        
+
         $response = $this->postJson('/api/books', $book->toArray());
 
         $response->assertStatus(201); // created
@@ -105,13 +105,13 @@ class BooksControllerTest extends TestCase
         });
     }
 
-        /**
+    /**
      * A basic feature test example.
      *
      * @return void
      */
     public function test_put_books_endpoint()
-    {   
+    {
         $book = Book::factory(1)->createOne();
 
         $updatedBook = [
@@ -120,7 +120,7 @@ class BooksControllerTest extends TestCase
         ];
 
         $response = $this->putJson('/api/books/' . $book->id, $updatedBook);
-        
+
         $response->assertStatus(200);
 
         $response->assertJson(function (AssertableJson $json) use ($updatedBook) {
@@ -137,6 +137,37 @@ class BooksControllerTest extends TestCase
                 "title" => $updatedBook['title'],
                 "isbn" => $updatedBook['isbn'],
             ]);
+        });
+    }
+
+    /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function test_patch_books_endpoint()
+    {
+        $book = Book::factory(1)->createOne();
+
+        $updatedBook = [
+            'title' => 'Random Title'
+        ];
+
+        $response = $this->patchJson('/api/books/' . $book->id, $updatedBook);
+
+        $response->assertStatus(200);
+
+        $response->assertJson(function (AssertableJson $json) use ($updatedBook) {
+
+            $json->hasAll(["id", "title", "isbn", 'created_at', 'updated_at']); //->etc();
+
+            $json->whereAllType([
+                "id" => 'integer',
+                "title" => 'string',
+                "isbn" => 'string'
+            ]);
+
+            $json->where("title", $updatedBook['title']);
         });
     }
 }
