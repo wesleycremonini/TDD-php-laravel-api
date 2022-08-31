@@ -24,8 +24,10 @@ Como rodar:
 ###### Você vai precisar do docker-compose para utilizar o Sail e subir os containers.
 
 1. Clone este repositório.
-2. cd /your/app/folder && ./vendor/bin/sail up -d (para subir os containers)
-3. ./vendor/bin/sail artisan test (para rodar os testes)
+2. cd /your/app/folder
+3. composer install
+4. ./vendor/bin/sail up -d (para subir os containers)
+5. ./vendor/bin/sail artisan test (para rodar os testes)
 
 Obs: Você pode adicionar um alias temporário para o Sail.
 ```bash
