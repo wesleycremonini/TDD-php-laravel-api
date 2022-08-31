@@ -170,4 +170,18 @@ class BooksControllerTest extends TestCase
             $json->where("title", $updatedBook['title']);
         });
     }
+
+        /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function test_delete_books_endpoint()
+    {
+        $book = Book::factory(1)->createOne();
+
+        $response = $this->deleteJson('/api/books/' . $book->id);
+
+        $response->assertStatus(204); // no content
+    }
 }
