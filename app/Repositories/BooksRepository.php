@@ -22,9 +22,16 @@ class BooksRepository
     return $modelResponse;
   }
 
-  public function create($book)
+  public function create(array $book)
   {
     $modelResponse = $this->model->create($book);
+    return $modelResponse;
+  }
+
+  public function update(int $id, array $updatedBook)
+  {
+    $modelResponse = $this->model->find($id);
+    $modelResponse->update($updatedBook);
     return $modelResponse;
   }
 }

@@ -33,4 +33,15 @@ class BooksService
     $repositoryResponse = $this->repository->create($book);
     return $repositoryResponse;
   }
+
+  public function update(int $id, array $req)
+  {
+    $updatedBook = [
+      'title' => $req['title'],
+      'isbn' => $req['isbn']
+    ];
+
+    $repositoryResponse = $this->repository->update($id, $updatedBook);
+    return $repositoryResponse;
+  }
 }
