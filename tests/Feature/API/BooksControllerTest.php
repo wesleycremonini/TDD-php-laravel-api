@@ -74,4 +74,34 @@ class BooksControllerTest extends TestCase
             ]);
         });
     }
+
+    /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function test_post_books_endpoint()
+    {
+        $book = Book::factory(1)->makeOne(); // cria o model mas nao joga pra db
+        
+        $response = $this->postJson('/api/books', $book->toArray());
+
+        $response->assertStatus(201); // created
+
+        $response->assertJson(function (AssertableJson $json) use ($book) {
+
+            $json->hasAll(["id", "title", "isbn", 'created_at', 'updated_at']); //->etc();
+
+            $json->whereAllType([
+                "id" => 'integer',
+                "title" => 'string',
+                "isbn" => 'string'
+            ]);
+
+            $json->whereAll([
+                "title" => $book->title,
+                "isbn" => $book->isbn,
+            ]);
+        });
+    }
 }
