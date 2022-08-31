@@ -21,4 +21,16 @@ class BooksService
     $repositoryResponse = $this->repository->getOneById($id);
     return $repositoryResponse;
   }
+
+
+  public function store(array $req)
+  {
+    $book = [
+      'title' => $req['title'],
+      'isbn' => $req['isbn']
+    ];
+
+    $repositoryResponse = $this->repository->create($book);
+    return $repositoryResponse;
+  }
 }

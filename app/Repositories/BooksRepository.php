@@ -21,4 +21,10 @@ class BooksRepository
     $modelResponse = $this->model->find($id);
     return $modelResponse;
   }
+
+  public function create($book)
+  {
+    $modelResponse = $this->model->create($book);
+    return $modelResponse;
+  }
 }
