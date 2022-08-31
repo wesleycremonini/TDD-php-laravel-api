@@ -36,10 +36,9 @@ class BooksService
 
   public function update(int $id, array $req)
   {
-    $updatedBook = [
-      'title' => $req['title'],
-      'isbn' => $req['isbn']
-    ];
+    $updatedBook = [];
+    if (isset($req['title'])) $updatedBook['title'] = $req['title'];
+    if (isset($req['isbn'])) $updatedBook['isbn'] = $req['isbn'];
 
     $repositoryResponse = $this->repository->update($id, $updatedBook);
     return $repositoryResponse;
