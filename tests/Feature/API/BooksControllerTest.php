@@ -104,4 +104,39 @@ class BooksControllerTest extends TestCase
             ]);
         });
     }
+
+        /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function test_put_books_endpoint()
+    {   
+        $book = Book::factory(1)->createOne();
+
+        $updatedBook = [
+            'title' => 'Random Title',
+            'isbn' => '1234567890'
+        ];
+
+        $response = $this->putJson('/api/books/' . $book->id, $updatedBook);
+        
+        $response->assertStatus(200);
+
+        $response->assertJson(function (AssertableJson $json) use ($updatedBook) {
+
+            $json->hasAll(["id", "title", "isbn", 'created_at', 'updated_at']); //->etc();
+
+            $json->whereAllType([
+                "id" => 'integer',
+                "title" => 'string',
+                "isbn" => 'string'
+            ]);
+
+            $json->whereAll([
+                "title" => $updatedBook['title'],
+                "isbn" => $updatedBook['isbn'],
+            ]);
+        });
+    }
 }
