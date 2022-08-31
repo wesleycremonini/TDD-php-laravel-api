@@ -11,9 +11,15 @@ class BooksController extends Controller
     {
     }
 
-    public function index(Request $req)
+    public function index()
     {
         $serviceResponse = $this->service->index();
+        return $serviceResponse;
+    }
+
+    public function show(int $id)
+    {
+        $serviceResponse = $this->service->show($id);
         return $serviceResponse;
     }
 }

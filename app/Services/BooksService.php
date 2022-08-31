@@ -12,7 +12,13 @@ class BooksService
 
   public function index()
   {
-      $repositoryResponse = $this->repository->getAll();
-      return $repositoryResponse;
+    $repositoryResponse = $this->repository->getAll();
+    return $repositoryResponse;
+  }
+
+  public function show(int $id)
+  {
+    $repositoryResponse = $this->repository->getOneById($id);
+    return $repositoryResponse;
   }
 }
