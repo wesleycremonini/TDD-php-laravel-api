@@ -1,4 +1,4 @@
-##### API REST simples com Laravel desenvolvida à partir do uso de testes e a filosofia TDD.
+##### API REST simples com Laravel desenvolvida à partir do uso de testes e a filosofia TDD em um container Docker.
 
 Testes que guiaram o desenvolvimento:
 
